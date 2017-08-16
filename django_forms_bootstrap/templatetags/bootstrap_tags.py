@@ -16,7 +16,7 @@ register = template.Library()
 def _preprocess_fields(form):
     for field in form.fields:
         name = form.fields[field].widget.__class__.__name__.lower()
-        if not name.startswith("radio") and not name.startswith("checkbox"):
+        if not name.startswith("radio") and not name.startswith("checkbox") and not name.endswith('fileinput'):
             try:
                 form.fields[field].widget.attrs["class"] += " form-control"
             except KeyError:
